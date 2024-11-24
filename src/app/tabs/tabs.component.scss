@@ -25,8 +25,17 @@
     }
 
     &-content {
+        margin-left: 40px;
+
         &__item {
             color: var(--hot-red);
+        }
+
+        &__title {
+            display: inline-block;
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 50px;
         }
     }
 }
