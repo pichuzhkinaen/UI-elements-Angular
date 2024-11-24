@@ -16,6 +16,9 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 export class TabsComponent implements DoCheck {
 	public label: string = 'Label';
 	public caption: string = 'Caption';
+	public readOnly: boolean = false;
+	public disabled: boolean = false;
+	public indeterminate: boolean = false;
 
 	constructor(
         
@@ -27,8 +30,20 @@ export class TabsComponent implements DoCheck {
         checkbox: new FormControl(false),
     });
 
-	ngDoCheck(): void {
+	public ngDoCheck(): void {
 		console.log(this.form);
 		console.log(this.form.value);
+		console.log(this.disabled);
+	}
+
+	public setDisabled(): void {
+		this.disabled = !this.disabled;
+
+		if (this.disabled) {
+            this.form.disable();
+        } else {
+            this.form.enable();
+        }
+        this.form.updateValueAndValidity();
 	}
 }

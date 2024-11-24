@@ -28,10 +28,9 @@ export class CheckboxComponent extends CheckboxControlValueAccessor implements O
 	@Output() indeterminateChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 	@Input() label: string = '';
 	@Input() caption: string = '';
-	@Input() disabled: boolean = false;
 	@Input() readOnly: boolean = false;
 
-	private _value: boolean = false;
+	
     public set value(value: boolean) {
         this._value = value;
     }
@@ -49,6 +48,20 @@ export class CheckboxComponent extends CheckboxControlValueAccessor implements O
 		this.cd.markForCheck();
 		this.indeterminateChange.emit(this._indeterminate);
 	}
+
+	public get disabled(): boolean {
+		this._disabled = !!this.control.disabled;
+        return this._disabled;
+    }
+
+    @Input()
+    public set disabled(value: boolean) {
+        this._disabled = value;
+        this.cd.markForCheck();
+    }
+
+	private _value: boolean = false;
+	private _disabled: boolean = false;
 
 	constructor(
 		private readonly renderer: Renderer2,
@@ -71,4 +84,8 @@ export class CheckboxComponent extends CheckboxControlValueAccessor implements O
 			this.indeterminateChange.emit(this.indeterminate);
 		}
 	}
+
+	public override setDisabledState(): void {
+        this.cd.markForCheck();
+    }
 }

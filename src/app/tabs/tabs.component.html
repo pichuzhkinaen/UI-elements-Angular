@@ -6,11 +6,22 @@
     <form [formGroup]="form">
         <div class="tabs-content__item">
             <span class="tabs-content__title">Checkbox</span>
-            <app-checkbox
-                formControlName="checkbox"
-                [label]="label"
-                [caption]="caption">
-            </app-checkbox>
+            <div class="block">
+                <app-checkbox
+                    formControlName="checkbox"
+                    [label]="label"
+                    [caption]="caption"
+                    [disabled]="disabled"
+                    [readOnly]="readOnly"
+                    [indeterminate]="indeterminate">
+                </app-checkbox>
+                <div class="control">
+                    <button class="control__button" (click)="setDisabled()">Disabled</button>
+                    <!-- <button class="control__button" (click)="setReadOnly()">Read only</button>
+                    <button class="control__button" (click)="setIndeterminate()">Indeterminate</button> -->
+                </div>
+            </div>
+
         </div>
     </form>
 </div>
