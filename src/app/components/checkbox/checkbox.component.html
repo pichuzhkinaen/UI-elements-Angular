@@ -1,0 +1,13 @@
+<div class="checkbox-wrapper">
+    <label class="checkbox">
+        <span class="checkbox__wrapper-input">
+            <input
+                #inputElement
+                type="checkbox"
+                class="checkbox__input"
+                [indeterminate]="indeterminate"
+                (change)="checkboxChanged()">
+            <span class="checkbox__layout-input"></span>
+        </span>
+    </label>
+</div>

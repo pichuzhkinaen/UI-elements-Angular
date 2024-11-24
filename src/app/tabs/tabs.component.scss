@@ -1,0 +1,32 @@
+:host {
+    display: flex;
+}
+
+.tabs {
+    &-list {
+        &__item {
+            width: 200px;
+            height: 40px;
+            font-weight: 500;
+            color: #746e7c;
+            cursor: pointer;
+            transition: color .3s ease;
+
+            &:hover {
+                color: #413e46;
+            }
+        }
+    }
+
+    &-divider {
+        width: 1px;
+        background: #cdcdcd66;
+        margin-inline: 0.5rem;
+    }
+
+    &-content {
+        &__item {
+            color: var(--hot-red);
+        }
+    }
+}
