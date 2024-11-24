@@ -11,7 +11,7 @@ import {
 	Renderer2,
 } from '@angular/core';
 import {
-    DefaultValueAccessor,
+    CheckboxControlValueAccessor,
     FormControl,
     NgControl
 } from '@angular/forms';
@@ -24,19 +24,18 @@ import {
 	templateUrl: './checkbox.component.html',
 	styleUrl: './checkbox.component.scss'
 })
-export class CheckboxComponent extends DefaultValueAccessor implements OnInit {
+export class CheckboxComponent extends CheckboxControlValueAccessor implements OnInit {
 	@Output() indeterminateChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 	@Input() label: string = '';
 	@Input() caption: string = '';
+	@Input() disabled: boolean = false;
 	@Input() readOnly: boolean = false;
 
 	private _value: boolean = false;
-    @Input() set value(value: boolean) {
+    public set value(value: boolean) {
         this._value = value;
     }
     public get value(): boolean {
-		console.log(this.control);
-		console.log(this.control.value);
         return !!this.control.value;
     }
 
@@ -44,7 +43,8 @@ export class CheckboxComponent extends DefaultValueAccessor implements OnInit {
 		@Input() get indeterminate(): boolean {
 		return this._indeterminate;
 	}
-	set indeterminate(value: boolean) {
+	
+	public set indeterminate(value: boolean) {
 		this._indeterminate = value;
 		this.cd.markForCheck();
 		this.indeterminateChange.emit(this._indeterminate);
@@ -58,13 +58,12 @@ export class CheckboxComponent extends DefaultValueAccessor implements OnInit {
         @Optional()
         public readonly control: NgControl,
 	) {
-		super(renderer, elementRef, true);
+		super(renderer, elementRef);
 		this.control.valueAccessor = this;
 	}
 
 	public ngOnInit(): void {
-		console.log(this.control.value);
-		
+		this.control.control?.updateValueAndValidity();
 	}
 
 	public checkboxChanged(): void {

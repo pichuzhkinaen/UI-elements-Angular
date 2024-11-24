@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-  import { CheckboxComponent } from '../components/checkbox/checkbox.component';
-  import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, DoCheck } from '@angular/core';
+import { CheckboxComponent } from '../components/checkbox/checkbox.component';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
 	selector: 'app-tabs',
@@ -13,7 +13,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 	styleUrl: './tabs.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabsComponent {
+export class TabsComponent implements DoCheck {
 	public label: string = 'Label';
 	public caption: string = 'Caption';
 
@@ -25,6 +25,10 @@ export class TabsComponent {
 
 	protected form = new FormGroup({
         checkbox: new FormControl(false),
-
     });
+
+	ngDoCheck(): void {
+		console.log(this.form);
+		console.log(this.form.value);
+	}
 }

@@ -6,6 +6,7 @@
             type="checkbox"
             class="checkbox__input"
             [value]="value"
+            [attr.checked]="value"
             [indeterminate]="indeterminate"
             (change)="checkboxChanged()">
         <span class="checkbox__layout-input"></span>
