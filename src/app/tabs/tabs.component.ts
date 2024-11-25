@@ -51,11 +51,7 @@ export class TabsComponent implements DoCheck {
 		this.readOnly = !this.readOnly;
 	}
 
-	public setError(): void {
-
-	}
-
 	public setIndeterminate(): void {
-		
+
 	}
 }
