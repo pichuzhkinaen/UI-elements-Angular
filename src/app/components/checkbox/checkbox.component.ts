@@ -79,7 +79,7 @@ export class CheckboxComponent extends CheckboxControlValueAccessor implements O
 		this.control.control?.updateValueAndValidity();
 	}
 
-	public checkboxChanged(): void {
+	public setIndeterminate(): void {
 		if (this.indeterminate) {
 			this.indeterminateChange.emit(this.indeterminate);
 		}
