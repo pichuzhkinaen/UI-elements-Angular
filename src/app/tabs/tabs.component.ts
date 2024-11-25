@@ -46,4 +46,16 @@ export class TabsComponent implements DoCheck {
         }
         this.form.updateValueAndValidity();
 	}
+
+	public setReadOnly(): void {
+		this.readOnly = !this.readOnly;
+	}
+
+	public setError(): void {
+
+	}
+
+	public setIndeterminate(): void {
+		
+	}
 }

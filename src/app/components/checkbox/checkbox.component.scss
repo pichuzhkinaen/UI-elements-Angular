@@ -69,7 +69,8 @@
         }
     }
 
-    &--disabled {
+    &--disabled,
+    &--readOnly {
         opacity: 0.5;
     }
 }
