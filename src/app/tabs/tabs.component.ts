@@ -52,6 +52,6 @@ export class TabsComponent implements DoCheck {
 	}
 
 	public setIndeterminate(): void {
-
+		this.indeterminate = !this.indeterminate;
 	}
 }

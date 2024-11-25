@@ -58,6 +58,22 @@
         color: #807373;
     }
 
+    &--indeterminate {
+        #{$this}__layout-input {
+            &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: block;
+                width: 10px;
+                height: 2px;
+                background-color: white;
+            }
+        }
+    }
+
     &--checked {
         #{$this}__layout-input {
             background-color: #0546ff;
@@ -72,5 +88,6 @@
     &--disabled,
     &--readOnly {
         opacity: 0.5;
+        pointer-events: none;
     }
 }
